@@ -5,8 +5,9 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 
-
 public class SqliteDB {
+	private static final String[][] Object = null;
+
 	public boolean status=false;
 
 	Connection c = null;
@@ -63,6 +64,46 @@ public class SqliteDB {
 		
 	}
 	
+	public ResultSet getData() {
+		try {
+			this.stmt = c.createStatement();
+			ResultSet data = stmt.executeQuery("SELECT * FROM list");
+			return data;
+			
+		} catch (Exception e) {
+			System.out.println("Error:" + " " + e.getMessage()+" ");
+			return null;
+		}
+	} // end getData
+	
+	
+	public Object getObjectData() {
+		try {
+			this.stmt = c.createStatement();
+			ResultSet data = stmt.executeQuery("SELECT * FROM list");			
+			Object[][] obiekt = new Object[10][10];
+
+			int i=1;
+			while (data.next()) {	
+				obiekt[i][1]=data.getString("Id");
+				obiekt[i][2]=data.getString("Name");
+				obiekt[i][3]=data.getString("Password");
+				obiekt[i][4]=data.getString("Age");	
+				i++;	
+			}
+			for (int k=1;k<=3;k++) {
+				System.out.println("");
+				for (int j=1;j<=4;j++)
+				System.out.print(obiekt[k][j]+" ");
+			}
+			
+			return obiekt;
+		} catch (Exception e) {
+			System.out.println("Error1:" + " " + e.getMessage());
+			return null;
+		}
+	} // end getObjectData
+	
 	public void closeDB() {
 		try {
 			c.close();
@@ -70,6 +111,8 @@ public class SqliteDB {
 		} catch (Exception e) {
 			System.out.println("Error:" + " " + e.getMessage()+" ");
 		}
-	}
+	} //end closeDB
+
+
 	
 }

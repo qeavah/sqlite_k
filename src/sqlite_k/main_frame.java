@@ -9,10 +9,12 @@ import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 import javax.swing.JTable;
 import javax.swing.border.LineBorder;
-import javax.swing.table.DefaultTableModel;
+
 
 public class main_frame {
 
@@ -86,7 +88,7 @@ public class main_frame {
 		lblPassword.setBounds(19, 77, 61, 16);
 		frame.getContentPane().add(lblPassword);
 		
-		JButton btnNewButton = new JButton("Enter the system");
+		JButton btnNewButton = new JButton("Enter the System");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (fieldLogin.getText().equals("admin")) {
@@ -112,6 +114,20 @@ public class main_frame {
 		table_1.setCellSelectionEnabled(true);
 		table_1.setBounds(248, 40, 380, 429);
 		frame.getContentPane().add(table_1);
+		
+		JButton btnReadDatabase = new JButton("Read Database");
+		btnReadDatabase.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (table_1.isVisible()) {
+				SqliteDB db = new SqliteDB();
+				db.getObjectData();
+				}
+				
+			}
+			});
+		
+		btnReadDatabase.setBounds(19, 150, 196, 29);
+		frame.getContentPane().add(btnReadDatabase);
 		table_1.setVisible(false);
 
 		
