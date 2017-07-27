@@ -14,6 +14,28 @@ import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 import javax.swing.JTable;
 import javax.swing.border.LineBorder;
+import javax.swing.JProgressBar;
+import javax.swing.JMenuBar;
+import javax.swing.JMenu;
+import javax.swing.JMenuItem;
+import javax.swing.JCheckBoxMenuItem;
+import javax.swing.JRadioButtonMenuItem;
+import javax.swing.SwingConstants;
+import javax.swing.JSplitPane;
+import javax.swing.JDesktopPane;
+import javax.swing.JScrollPane;
+import javax.swing.JTabbedPane;
+import javax.swing.JCheckBox;
+import javax.swing.JToggleButton;
+import javax.swing.JComboBox;
+import javax.swing.JTree;
+import javax.swing.JInternalFrame;
+import java.awt.BorderLayout;
+import javax.swing.JList;
+import javax.swing.JLayeredPane;
+import javax.swing.JFormattedTextField;
+import java.awt.Rectangle;
+import java.awt.Dimension;
 
 
 public class main_frame {
@@ -58,7 +80,9 @@ public class main_frame {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 646, 507);
+		frame.getContentPane().setSize(new Dimension(2000, 1000));
+		frame.setBounds(new Rectangle(0, 0, 2000, 1300));
+		frame.setBounds(100, 100, 803, 651);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
@@ -112,7 +136,7 @@ public class main_frame {
 		table_1.setBorder(new LineBorder(new Color(0, 0, 0)));
 		table_1.setColumnSelectionAllowed(true);
 		table_1.setCellSelectionEnabled(true);
-		table_1.setBounds(248, 40, 380, 429);
+		table_1.setBounds(248, 40, 370, 95);
 		frame.getContentPane().add(table_1);
 		
 		JButton btnReadDatabase = new JButton("Read Database");
@@ -128,6 +152,35 @@ public class main_frame {
 		
 		btnReadDatabase.setBounds(19, 150, 196, 29);
 		frame.getContentPane().add(btnReadDatabase);
+		
+		JProgressBar progressBar = new JProgressBar();
+		progressBar.setBounds(248, 15, 370, 20);
+		frame.getContentPane().add(progressBar);
+		
+		JMenuBar menuBar = new JMenuBar();
+		frame.setJMenuBar(menuBar);
+		
+		JMenu mnFile = new JMenu("File");
+		menuBar.add(mnFile);
+		
+		JMenuItem mntmFirst = new JMenuItem("First");
+		mnFile.add(mntmFirst);
+		
+		JMenuItem mntmSecond = new JMenuItem("Second");
+		mnFile.add(mntmSecond);
+		
+		JRadioButtonMenuItem rdbtnmntmRadio = new JRadioButtonMenuItem("Radio");
+		menuBar.add(rdbtnmntmRadio);
+		
+		JMenuItem mntmItem_1 = new JMenuItem("Item2");
+		mntmItem_1.setHorizontalAlignment(SwingConstants.CENTER);
+		menuBar.add(mntmItem_1);
+		
+		JMenuItem mntmItem = new JMenuItem("Item1");
+		menuBar.add(mntmItem);
+		
+		JCheckBoxMenuItem chckbxmntmCheck = new JCheckBoxMenuItem("Check");
+		menuBar.add(chckbxmntmCheck);
 		table_1.setVisible(false);
 
 		
